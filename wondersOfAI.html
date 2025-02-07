@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonders of AI 2.0 Hackathon</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #60a5fa;
+            --secondary: #a78bfa;
+            --background: rgba(250, 250, 250, 0.95);
+            --text: #475569;
+            --accent: #f8fafc;
+            --border: #f1f5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .body {
+            
+            background-image: url("kare.jpg");
+            
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1920/1080') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: -2;
+        }
+
+        
+        
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 1rem 0;
+            background: var(--background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 0px 0px 20px 20px;
+            background-color: #333;
+        }
+
+        /* Logo Container Styles */
+        .logo-scroll-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .logo-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            padding: 5px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .logo-circle {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            padding: 8px;
+        }
+
+        .logo-rectangle {
+            height: 50px;
+            width: auto;
+            min-width: 120px;
+            max-width: 200px;
+        }
+
+        .title {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: bold;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 1.5rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: brown;
+            padding: 0 10px;
+        }
+
+        .date {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bolder;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: black;
+        }
+
+        .register-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0 auto;
+            width: fit-content;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: white;
+            background: var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(96, 165, 250, 0.1);
+        }
+
+        .register-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        .about{
+            color: #F0F0F0;
+        }
+
+        .section {
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            background-color: #003366;
+        }
+        
+
+        .section-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #FFFFFF;
+        }
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            padding: 0 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #F0F0F0;
+        }
+
+        .feature-list li {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #F0F0F0;
+            color: black;
+            font-weight: 900;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .prize-amount {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin: 1.5rem 0;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 1.5rem 0;
+            text-align: center; 
+            background: var(--background);
+            color: #FFFFFF;
+            background-color: #333;
+        }
+
+        .contact {
+            margin-bottom: 1rem;
+        }
+
+        .contact a {
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .logo {
+                height: 70px;
+            }
+            
+            .logo-circle {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .logo-rectangle {
+                height: 70px;
+                min-width: 160px;
+                max-width: 250px;
+            }
+
+            .section {
+                padding: 2rem;
+                margin: 1.5rem 0;
+            }
+
+            .feature-list li {
+                font-size: 1rem;
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .logo-container {
+                padding: 0 10px;
+            }
+            
+            .logo {
+                height: 40px;
+            }
+            
+            .logo-circle {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo-rectangle {
+                height: 40px;
+                min-width: 100px;
+                max-width: 160px;
+            }
+
+            .section {
+                padding: 1.2rem;
+                margin: 0.8rem 0;
+            }
+
+            .feature-list li {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .prize-amount {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) {
+            .logo:active,
+            .register-btn:active,
+            .feature-list li:active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="overlay"></div>
+    
+    <header>
+        <div class="logo-scroll-container">
+            <div class="logo-container">
+                <img src="./Kalasalingam_Academy_of_Research_and_Education_logo.png" alt="Kalasalingam University" class="logo logo-circle">
+                <img src="./Kriyaitor-Logo-18-05-1536x538.png" alt="KRIYAITOR" class="logo logo-rectangle">
+                <img src="./WhatsApp Image 2025-02-07 at 11.43.06_ac0530ca - Copy (2).jpg" alt="Euphoria" class="logo logo-rectangle">
+                <img src="./modified_image.png" alt="KARE OSS" class="logo logo-circle">
+            </div>
+            
+        </div>
+    </header>    
+    <main class="container">    
+        <div class="container">
+            <h1 class="title">WONDERS of AI 2.0</h1>
+            <div class="date">
+                <i class="fas fa-calendar-alt"></i>
+                March/13/2025 10 AM - March/14/2025 10 AM
+            </div>
+            <a href="https://euphoria.kalasalingam.ac.in/" class="register-btn">
+                <i class="fas fa-rocket"></i> Register Now
+            </a>
+        </div>
+    
+
+    
+        <section class="section">
+            <div class="section-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <h2 class="section-title">About the Event</h2>
+            <p class="about">Welcome to Wonders of AI 2.0 Hackathon! A pivotal event hosted by KARE Open Source Society as part of Euphoria 2025: Techno-Management meets Sustainability, at Kalasalingam Academy of Research and Education.</p>
+        </section>
+
+        <section class="section">
+            <div class="section-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h2 class="section-title">Team Specifications</h2>
+            <ul class="feature-list">
+                <li><i class="fas fa-user-friends"></i> A team must consist of a maximum of 5 members</li>
+                <li><i class="fas fa-signature"></i> Every team must have a unique team name</li>
+                <li><i class="fas fa-user-tie"></i> Each team should have a team representative</li>
+                <li><i class="fas fa-university"></i> Inter-college and inter-specialization team members are allowed</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <div class="section-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2 class="section-title">Prizes</h2>
+            <div class="prize-amount">
+                <i class="fas fa-award"></i> Prize Pool: INR 50,000
+            </div>
+            <ul class="feature-list">
+                <li><i class="fas fa-certificate"></i> Participation certificates for all participants</li>
+                <li><i class="fas fa-briefcase"></i> Internship opportunity for best performers</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <div class="section-icon">
+                <i class="fas fa-gavel"></i>
+            </div>
+            <h2 class="section-title">General Rules</h2>
+            <ul class="feature-list">
+                <li><i class="fas fa-clock"></i> 24 hours to develop their solution</li>
+                <li><i class="fas fa-tasks"></i> Projects will be viewed by the judging panel, and the top 3 projects will be selected</li>
+                <li><i class="fas fa-star"></i> Finalists will be scored on originality, understanding of the problem statement, and the viability of the solution</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="contact">
+                <a href="mailto:kareoss@klu.ac.in">
+                    <i class="fas fa-envelope"></i>
+                    kareoss@klu.ac.in
+                </a>
+            </div>
+            <p>© Kalasalingam Academy of Research and Education</p>
+            <p>Organized by KARE Open Source Society</p>
+            <p>Sponsored by KRIYAITOR</p>
+        </div>
+    </footer>
+</body>
+</html>
