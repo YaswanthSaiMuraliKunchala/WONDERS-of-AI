@@ -16,6 +16,19 @@
             --accent: #f8fafc;
             --border: #f1f5f9;
         }
+        .parallax {
+  /* The image used */
+  background-image: url("kare.jpg");
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
         * {
             margin: 0;
@@ -335,7 +348,7 @@
     </style>
 </head>
 <body class="body">
-    <div class="overlay"></div>
+    <div class="overlay">
     
     <header>
         <div class="logo-scroll-container">
@@ -347,7 +360,8 @@
             </div>
             
         </div>
-    </header>    
+    </header>
+    <div class="parallax">   
     <main class="container">    
         <div class="container">
             <h1 class="title">WONDERS of AI 2.0</h1>
@@ -423,5 +437,6 @@
             <p>Sponsored by KRIYAITOR</p>
         </div>
     </footer>
+</div>
 </body>
 </html>
